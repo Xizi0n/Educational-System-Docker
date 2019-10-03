@@ -1,0 +1,61 @@
+.divider {
+    height: 48px;
+    background-color: #212121;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px 0;
+    /* border-top: 1px solid rgba(250, 250, 250, 0.8); */
+    border-bottom: 1px solid rgba(250, 250, 250, 0.8);
+    color: #fafafa;
+}
+
+.feladatok {
+
+    font-size: 30px;
+    line-height: 48px;
+}
+
+.input {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 30px;
+    font-size: 22px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.button-action {
+    padding: 7px;
+    color: whitesmoke;
+    background-color: #7cb342;
+    border: none;
+    font-size: 20px;
+    margin-right: 16px;
+}
+
+.button-cancel {
+    padding: 7px;
+    color: whitesmoke;
+    background-color: #CD2C32;
+    border: none;
+    font-size: 20px
+}
+
+.button-cancel:hover,
+.button-action:hover {
+    color: black;
+}
+
+.add-exercise {
+    width: 40%;
+    min-width: 300px;
+    margin: 0 auto;
+}

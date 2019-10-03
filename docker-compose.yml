@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  mainserver:
+    build: ./mainServer
+    ports:
+      - 4001:4001
+  imageserver:
+    build: ./imageServer
+    ports:
+      - 4002:4002
+  pdfserver:
+    build: ./pdfServer
+    ports:
+      - 4003:4003

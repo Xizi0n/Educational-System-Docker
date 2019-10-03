@@ -1,0 +1,109 @@
+
+
+.navDetailItem {
+    display: block;
+    background-color: #212121;
+    color: #fafafa;
+    font-size: 0.85em;
+    height: 40px;;
+    line-height: 40px;
+    padding-right: 1em;
+    padding-left: 3em;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.navDetailItem:hover {
+    background-color: #fafafa ;
+    color: #212121;
+    transition: 0.3s;
+    border-bottom: 3px solid rgb(216, 0, 47, 0.8);
+}
+
+.open {
+    background-color: #fafafa;
+    color: #212121;
+    border-bottom: 3px solid rgb(216, 0, 47, 0.8);
+}
+
+.hidden {
+    display: none;
+}
+
+.delete {
+    display: none;
+    position: relative;
+    left: 210px;
+    bottom: 40px;
+    max-height: 40px;
+    width: 25px;
+    line-height: 40px;
+    padding: 1px;
+    background-color: rgb(216, 0, 47);
+    color: #fafafa;
+    z-index: 4;
+    text-align: center;
+}
+
+.delete:hover {
+    color: rgb(216, 0, 47);
+    background-color: #fafafa;
+    cursor: pointer;
+}
+
+.navDetailItem:hover .delete {
+    display: block;
+}
+
+
+@media only screen and (max-width: 1100px) {
+    
+    .dropDown {
+        position: absolute;
+        left: 75px;
+        color: #212121;
+        width: 300px;
+        background-color: #fafafa;
+    }
+
+    .navDetailItem {
+        background-color: #fafafa;
+        color: #212121;
+    }
+
+    .navDetailItem:hover {
+        background-color: #212121;
+        color: #fafafa;
+    }
+
+     * + * {
+        position: relative;
+        top: 43px;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .dropDown {
+        position: absolute;
+        left: 50px;
+        color: #212121;
+        width: 300px;
+        background-color: #fafafa;
+    }
+
+    .navDetailItem:hover {
+        background-color: #212121;
+        color: #fafafa;
+    }
+
+     * + * {
+        position: relative;
+        top: 43px;
+    }
+
+}
+
+
+

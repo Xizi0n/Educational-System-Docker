@@ -1,0 +1,135 @@
+<div class="wrapper">
+  <div class="sidenav">
+    <app-sidenav class="sidenav"></app-sidenav>
+  </div>
+  <div class="content" id="content">
+    <div id="actions" *ngIf="hasLessonToShow">
+      <div style="max-width:200px; margin-bottom: 15px">
+        <div
+          *ngIf="
+            isEditing === false &&
+            currentLesson !== '' &&
+            auth.canEdit &&
+            auth.isEditMode
+          "
+          class="actionButton"
+          (click)="toggleUpload()"
+          style="color:#212121; background-color:#7cb342"
+        >
+          <i class="fas fa-file-upload"></i>
+        </div>
+        <div
+          *ngIf="isEditing === false && currentLesson !== ''"
+          class="actionButton"
+          (click)="savePdf()"
+          style="color:#212121; background-color:#fafafa"
+        >
+          <i class="fas fa-file-download"></i>
+        </div>
+
+        <div
+          *ngIf="
+            isEditing === false &&
+            currentLesson !== '' &&
+            auth.canEdit &&
+            auth.isEditMode
+          "
+          class="actionButton"
+          (click)="startEdit()"
+          style="color:#212121; background-color:#fafafa"
+        >
+          <i class="fas fa-edit"></i>
+        </div>
+        <div
+          *ngIf="isDark"
+          class="actionButton"
+          (click)="changeColor()"
+          style="background-color: #fafafa; color: #212121"
+        >
+          <i class="fas fa-sun"></i>
+        </div>
+        <div
+          *ngIf="!isDark"
+          class="actionButton"
+          (click)="changeColor()"
+          style="background-color: #212121; color: #fafafa"
+        >
+          <i class="fas fa-moon"></i>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="addFile" class="addFile">
+      <div class="addFilePanel">
+        <input
+          type="text"
+          placeholder="Fájl neve"
+          class="addFile__input"
+          [(ngModel)]="fileToUpload.name"
+          required
+        />
+        <input
+          type="file"
+          id="fileselector"
+          accept="application/pdf"
+          (change)="fileChanged($event)"
+          required
+        />
+        <button style="background-color: #7cb342" (click)="uploadPdf()">
+          Feltöltés
+        </button>
+        <button style="background-color: #e53935" (click)="toggleUpload()">
+          Bezár
+        </button>
+      </div>
+    </div>
+    <div *ngIf="!isEditing">
+      <div #contentToShow id="toPdf"></div>
+    </div>
+    <div *ngIf="isEditing">
+      <app-ngx-editor [(ngModel)]="currentLesson.content"></app-ngx-editor>
+      <div class="buttonGroup">
+        <div
+          class="button"
+          style="background-color: #1e88e5; color:#fafafa"
+          (click)="updateLesson()"
+        >
+          <i class="fas fa-save"></i> &nbsp;Mentés
+        </div>
+        <div
+          class="button"
+          style="background-color: #e53935; color: #fafafa"
+          (click)="cancelEditing()"
+        >
+          <i class="fas fa-ban"></i> &nbsp;Mégse
+        </div>
+      </div>
+    </div>
+    <div class="files" *ngIf="hasLessonToShow">
+      <div>
+        Fájlok
+        <i
+          *ngIf="auth.canEdit && auth.isEditMode"
+          class="fas fa-plus-circle"
+          (click)="addExercise()"
+        ></i>
+      </div>
+    </div>
+    <div *ngIf="hasLessonToShow">
+      <div *ngIf="currentLesson.files.length > 0" class="file-list">
+        <div *ngFor="let file of currentLesson.files">
+          <app-file [file]="file"></app-file>
+        </div>
+      </div>
+    </div>
+    <div class="exercises" *ngIf="!isEditing && courseService.actualCourse">
+      <app-exercises
+        [lesson]="currentLesson"
+        *ngIf="hasLessonToShow"
+      ></app-exercises>
+    </div>
+
+    <!-- <div *ngIf="!(courseService.lessonToShow !== null && courseService.lessonToShow !== undefined)">
+        <div id="highlight">Kérem válasszon a tárgyak közül!</div>
+    </div> -->
+  </div>
+</div>
