@@ -76,7 +76,7 @@ app.get("/pdf/:fileName", isAuth, (req, res, next) => {
 
 mongoose
   .connect(
-    "mongodb+srv://adam:GKLCVf35uvgx3Bev@cluster0-p72yj.mongodb.net/tudastar"
+    "mongodb+srv://adam:iFNR6fPMDBLFmF9Y@cluster0-p72yj.mongodb.net/tudastar"
   )
   .then(() => {
     app.listen(4003, () => {
