@@ -23,12 +23,12 @@ module.exports.deleteUser = (req, res, next) => {
 module.exports.updateUser = (req, res, next) => {
   const { userId, role } = req;
   const userToUpdate = req.body.id;
-  const updatedUserInfo = req.body.user;
+  const updatedRole= req.body.role;
   User.findOne({ _id: userToUpdate }).then(user => {
     if (user) {
       if (user._id.toString() === userId || role === "admin") {
-        user
-          .updateOne(updatedUserInfo)
+        user.role =  updatedRole;
+        return user.save()
           .then(sucess => {
             console.log("Succesfully updated");
           })
